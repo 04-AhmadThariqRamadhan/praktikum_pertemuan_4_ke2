@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class PgwSeeder extends Seeder
 {
@@ -13,6 +15,12 @@ class PgwSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $faker = Faker::create('id_ID');
+        for($x = 1; $x <=10; $x++){
+            DB::table('pegawai')->insert([
+                'nama' => $faker->name,
+                'alamat' => $faker->address,
+            ]);
+        }
     }
 }
